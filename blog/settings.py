@@ -26,11 +26,17 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = bool(env('DEBUG'))
+DEBUG = env('DEBUG')
+if DEBUG == 'True':
+    DEBUG = True
+else:
+    DEBUG = False
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['taku-blog.net', 'www.taku-blog.net', '*']
+
+CSRF_TRUSTED_ORIGINS = ['https://www.taku-blog.net']
 
 # Application definition
 
